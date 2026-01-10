@@ -2,7 +2,7 @@ import streamlit as st
 import zipfile
 from datetime import datetime
 from pathlib import Path
-import text_extract ு
+import text_extract
 import smtplib
 from email.message import EmailMessage
 
@@ -103,3 +103,4 @@ if uploaded_file is not None:
         
 
         status.update(label="வேலை முடிந்தது!", state="complete")
+
