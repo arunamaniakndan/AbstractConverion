@@ -104,3 +104,4 @@ if uploaded_file is not None:
 
         status.update(label="வேலை முடிந்தது!", state="complete")
 
+
