@@ -1,0 +1,7 @@
+streamlit
+watchdog
+pandas
+openpyxl
+google-genai
+pymupdf
+colorama
