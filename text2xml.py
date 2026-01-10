@@ -6,12 +6,8 @@ from google import genai
 from concurrent.futures import ThreadPoolExecutor, wait, ALL_COMPLETED
 from colorama import Fore, Style, init
 import time
-
-#a
-# client = genai.Client(api_key="AIzaSyD-JkdSiXplV_Htwyf2scxhMomsoZ4IGfI")
-
-# xml2
-client = genai.Client(api_key="AIzaSyBnGZF1mvowuQRZJaBj4stnj1vcIzRHdps")
+import streamlit as st
+client = genai.Client(api_key=st.secrets["GEMINI_API_KEY"])
 
 user_prompt1='<a>--author and splitted by semi colon and remove comma and author format Surname With initial short format and retain or add dot and remove space within initial, <e>--other title means book or article,  <s>--source or Chapter or article title, <y>--Year1,  <v>--Volume 1, <is>--Issue, <pg>--page range, <txt>--Other text and month annd except tag text is taken <txt>, <url>--URL, <doi>--DOI, <coll>--Collabration author (Company), collab is not a within author Author replace is company, <rawtext>--retain original format reference, <ref>--each reference tag within <ref> do not validate reference and just only add short tag if any tag content is not available or matching in input ignore tag retain [[ch####]] Example tagging Structure: <ref><rawtext></rawtext><au></au><s></s><e></e><v></v><is></is><pg></pg><txt></txt></ref>'
 # user_prompt1='NLM DTD XML Structure Reference Part only and add additional tag for <rawtx> plain reference'
@@ -96,3 +92,4 @@ if __name__ == "__main__":
     print("completed")
 
     # List all .txt files, excluding those already processed (files containing '_tagged')
+
