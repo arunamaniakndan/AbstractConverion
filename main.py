@@ -8,8 +8,8 @@ from email.message import EmailMessage
 
 def send_email_with_attachments(receiver_email, job_name, folder_path):
     # மின்னஞ்சல் விவரங்கள்
-    sender_email = "arunamanikandan.2025@gmail.com"  # உங்கள் மின்னஞ்சல்
-    app_password = "jpwl hewf jsdl bynr"   # கூகுள் ஆப் பாஸ்வேர்டு
+    sender_email = st.secrets["SENDER_EMAIL"]  # உங்கள் மின்னஞ்சல்
+    app_password = st.secrets["EMAIL_PASSWORD"]   # கூகுள் ஆப் பாஸ்வேர்டு
 
     msg = EmailMessage()
     msg['Subject'] = f"Job Completed: {job_name}"
@@ -103,5 +103,6 @@ if uploaded_file is not None:
         
 
         status.update(label="வேலை முடிந்தது!", state="complete")
+
 
 
