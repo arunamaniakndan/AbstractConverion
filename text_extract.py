@@ -77,6 +77,7 @@ def process_job(pdf_path, excel_path, output_dir,st):
             continue
         try:
             print(f"Processing {name}...")
+            st.write(f"Processing {name}...")
             s1 = str(row['start'])
             full_text = extract_pdf_text(doc, s1, s1, current_offset)
             text_fm += f'[[{name}]]\n{full_text}\n'            
@@ -108,6 +109,7 @@ def process_job(pdf_path, excel_path, output_dir,st):
     # tx2xml_main.main(output_dir)
     # fm_file = os.path.basename(pdf_path).replace(".pdf", ".txt")
     # txt2dat.main(df, output_dir, fm_file)
+
 
 
 
