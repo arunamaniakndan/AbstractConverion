@@ -68,9 +68,11 @@ def process_single_file(text_file):
         print(f"{Fore.RED}✘ Permanent Error {text_file.name}: {e}{Fore.RESET}")
     return False
 
-def m1(folder_path):
+def m1(folder_path,st):
     # Ensure we only pick files that need tagging
     text_files = [f for f in folder_path.glob('*.txt') if "_tagged" not in f.name]
+    files = [f.name for f in text_files]
+    st.write(f"Processing: {",".join(files)})
     if not text_files:
         return
 
@@ -81,7 +83,7 @@ def m1(folder_path):
         futures = [executor.submit(process_single_file, f) for f in text_files]
         # REINFORCEMENT: Explicitly wait for all futures in this batch to finish
         wait(futures, return_when=ALL_COMPLETED)
-    
+    st.success(f"Processing: {",".join(files)})
     print("Batch threads finished.")
 
 
@@ -92,5 +94,6 @@ if __name__ == "__main__":
     print("completed")
 
     # List all .txt files, excluding those already processed (files containing '_tagged')
+
 
 
