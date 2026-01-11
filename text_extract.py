@@ -48,14 +48,14 @@ def extract_pdf_text(pdf, start_pg, end_pg, offset=0):
         
     return text
 
-def main(pdf_path, excel_path, output_dir):
-    process_job(pdf_path, excel_path, output_dir)
+def main(pdf_path, excel_path, output_dir,st):
+    process_job(pdf_path, excel_path, output_dir,st)
     os.remove(pdf_path)
-    txt2xml_main.main(output_dir)
+    txt2xml_main.main(output_dir,st)
     fm_file = os.path.basename(pdf_path).replace(".pdf", ".txt")
     txt2dat.main(df, output_dir, fm_file)
 
-def process_job(pdf_path, excel_path, output_dir):
+def process_job(pdf_path, excel_path, output_dir,st):
     global df
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
@@ -101,11 +101,13 @@ def process_job(pdf_path, excel_path, output_dir):
 
     doc.close()
     print(f"\nSuccess! Merged text saved to: {output_dir}")
+    st.success(f"\nSuccess! Merged text saved to: {output_dir}")
 
 # if __name__ == "__main__":
     # process_chapters()
     # tx2xml_main.main(output_dir)
     # fm_file = os.path.basename(pdf_path).replace(".pdf", ".txt")
     # txt2dat.main(df, output_dir, fm_file)
+
 
 
