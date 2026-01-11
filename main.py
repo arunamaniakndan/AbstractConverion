@@ -72,7 +72,8 @@ if uploaded_file is not None:
                 text_extract.main(
                     pdf_path=str(pdf),
                     excel_path=str(excel),
-                    output_dir=str(job_output)
+                    output_dir=str(job_output),
+                    st = st
                 )
                 
                 # ... பழைய கோட் ...
@@ -103,6 +104,7 @@ if uploaded_file is not None:
         
 
         status.update(label="வேலை முடிந்தது!", state="complete")
+
 
 
 
