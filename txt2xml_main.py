@@ -15,7 +15,7 @@ source_folder = ''
 wip_folder = ''
 out_folder = ''
 
-def batch_process_files():
+def batch_process_files(st):
     global source_folder, wip_folder, out_folder
     batch_size = 5
     
@@ -36,7 +36,7 @@ def batch_process_files():
         
         # Step 2: Run Process
         folder_path = Path(wip_folder)
-        text2xml.m1(Path(folder_path))
+        text2xml.m1(Path(folder_path), st)
 
         # Step 3: Check for _Tagged.txt and Move/Reject
         for file_name in batch:
@@ -62,7 +62,7 @@ def batch_process_files():
         time.sleep(2)
     return True
 
-def main(source):
+def main(source,st):
     global source_folder, wip_folder, out_folder
     source_folder = source
     wip_folder = os.path.join(source_folder, 'WIP')
@@ -76,7 +76,7 @@ def main(source):
     try:
         chk = True
         while chk == True:
-            chk = batch_process_files()
+            chk = batch_process_files(st)
             if chk==True:
                 time.sleep(10) # Wait 10 seconds before checking source again
     except KeyboardInterrupt:
@@ -85,4 +85,5 @@ def main(source):
 if __name__ == "__main__":
     # Ensure 'source' is defined or passed as an argument
     target_path = r'C:\Your\Path\Here' 
+
     main(target_path)
