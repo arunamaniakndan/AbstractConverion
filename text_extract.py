@@ -6,15 +6,6 @@ import txt2xml_main
 import txt2dat
 
 df=""
-# --- Configuration ---
-pdf_path = r"D:\JOB\Arul-S1\Sample1\9798369331774\9798369331774.pdf"
-excel_path = r"D:\JOB\Arul-S1\Sample1\9798369331774\9798369331774.xlsx"
-output_dir = r"D:\JOB\Arul-S1\000000"
-# prelims_offset = 26 
-
-file_text = os.path.join(os.path.dirname(pdf_path), os.path.basename(pdf_path))
-file_text = file_text.replace(".pdf", ".txt")
-file_ref = file_text.replace(".txt", "_ref.txt")
 
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
@@ -63,6 +54,7 @@ def extract_pdf_text(pdf, start_pg, end_pg, offset=0):
 
 def main(pdf_path, excel_path, output_dir):
     process_job(pdf_path, excel_path, output_dir)
+    os.remove(pdf_path)
     txt2xml_main.main(output_dir)
     fm_file = os.path.basename(pdf_path).replace(".pdf", ".txt")
     txt2dat.main(df, output_dir, fm_file)
@@ -119,3 +111,4 @@ def process_job(pdf_path, excel_path, output_dir):
     # tx2xml_main.main(output_dir)
     # fm_file = os.path.basename(pdf_path).replace(".pdf", ".txt")
     # txt2dat.main(df, output_dir, fm_file)
+
